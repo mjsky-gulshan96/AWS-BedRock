@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://www.demandware.com/xml/impex/catalog/2006-10-31" catalog-id="apparel-m-catalog">
+    <header></header>
+    
+<category-assignment category-id="newarrivals-womens" product-id="25493665M">
+    <primary-flag>true</primary-flag>
+</category-assignment>
+
+<category-assignment category-id="womens-clothing-bottoms" product-id="25493602M">
+    <primary-flag>true</primary-flag>
+</category-assignment>
+
+<category-assignment category-id="newarrivals-womens" product-id="25484265M">
+    <primary-flag>true</primary-flag>
+</category-assignment>
+
+<category-assignment category-id="newarrivals-mens" product-id="12416789M">
+    <primary-flag>true</primary-flag>
+</category-assignment>
+
+<category-assignment category-id="womens" product-id="25493613M">
+    <primary-flag>true</primary-flag>
+</category-assignment>
+
+<category-assignment category-id="mens" product-id="25493624M">
+    <primary-flag>true</primary-flag>
+</category-assignment>
+
+<category-assignment category-id="newarrivals-womens" product-id="25050736M">
+    <primary-flag>true</primary-flag>
+</category-assignment>
+
+<category-assignment category-id="mens" product-id="25050730M">
+    <primary-flag>true</primary-flag>
+</category-assignment>
+
+<category-assignment category-id="newarrivals-womens" product-id="25448068M">
+    <primary-flag>true</primary-flag>
+</category-assignment>
+
+<category-assignment category-id="newarrivals" product-id="25448070M">
+    <primary-flag>true</primary-flag>
+</category-assignment>
+
+</catalog>

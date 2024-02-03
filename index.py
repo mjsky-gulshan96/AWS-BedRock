@@ -31,12 +31,13 @@ models = {
     "Amazon": "amazon.titan-text-lite-v1",
     'Anthropic': "anthropic.claude-v2:1",
     'Cohere': "cohere.command-text-v14",
-    'Meta': "meta.llama2-13b-chat-v1"
+    'Meta': "meta.llama2-13b-chat-v1",
+    'Amazon_Chat': "amazon.titan-text-express-v1"
 }
 
-model = st.sidebar.selectbox("select model", ['Amazon', 'Anthropic', 'Cohere', 'Meta'])
+model = st.sidebar.selectbox("select model", ['Amazon', 'Amazon_Chat', 'Anthropic', 'Cohere', 'Meta'])
 
-prompt = st.text_input('', value="", max_chars=500, key=None, type="default", placeholder='enter your prompt')
+prompt = st.text_input('', value="", max_chars=2500, key=None, type="default", placeholder='enter your prompt')
 
 def text_response(prompt, model):
 
@@ -77,6 +78,16 @@ def text_response(prompt, model):
         body = json.dumps({
             "inputText": prompt
         })
+    elif model == "Amazon_Chat":
+        body = json.dumps({
+            "inputText": prompt,
+            "textGenerationConfig": {
+                "maxTokenCount": 8192,
+                "stopSequences": [],
+                "temperature": 0,
+                "topP": 1
+            }
+        })
 
     response = bedrock_runtime.invoke_model(
         body=body,
@@ -94,7 +105,7 @@ def output_response(response, model_name):
         st.write(data.get("completion"))
     elif model_name == "Cohere":
         st.write(data.get("generations")[0]['text'])
-    elif model_name == "Amazon":
+    elif model_name == "Amazon_Chat":
         st.write(data.get('results')[0]['outputText'])
     elif model_name == "Meta":
         st.write(data.get('generation'))

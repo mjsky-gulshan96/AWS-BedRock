@@ -32,10 +32,10 @@ def image_response(prompt):
     }
 
     response = bedrock_runtime.invoke_model(
-    body=stability_payload["body"],
+    body=amazon_payload["body"],
     contentType="application/json",
     accept="*/*",
-    modelId=stability_payload["modelId"]
+    modelId=amazon_payload["modelId"]
     )
 
     return response
@@ -48,26 +48,27 @@ st.title("Create Your Own Image")
 
 prompt = st.text_input('', value="", max_chars=500, key=None, type="default", placeholder='enter your prompt')
 
-# if prompt:
-#     image_title = prompt[0: 4]
-#     response = image_response(prompt)
-#     data = json.loads(response['body'].read())
-#     # amazon titan model
-#     for image in enumerate(data["images"]):
-#         with open(f"./images/{image_title}{count}.png", "wb") as f:
-#             f.write(base64.b64decode(image[1]))
-#             st.image(f"./images/{image_title}{count}.png")
-#             count +=1
-
-
-# stablity model
-
+# if using amazon model 
 if prompt:
     image_title = prompt[0: 4]
     response = image_response(prompt)
     data = json.loads(response['body'].read())
-    for i, image in enumerate(data["artifacts"]):
-        with open(f"./images/{image_title}{i}.png", "wb") as f:
-            f.write(base64.b64decode(image["base64"]))
-            st.image(f"./images/{image_title}{i}.png")
+    # amazon titan model
+    for image in enumerate(data["images"]):
+        with open(f"./images/{image_title}{count}.png", "wb") as f:
+            f.write(base64.b64decode(image[1]))
+            st.image(f"./images/{image_title}{count}.png")
+            count +=1
+
+
+# stablity model
+
+# if prompt:
+#     image_title = prompt[0: 4]
+#     response = image_response(prompt)
+#     data = json.loads(response['body'].read())
+#     for i, image in enumerate(data["artifacts"]):
+#         with open(f"./images/{image_title}{i}.png", "wb") as f:
+#             f.write(base64.b64decode(image["base64"]))
+#             st.image(f"./images/{image_title}{i}.png")
 
